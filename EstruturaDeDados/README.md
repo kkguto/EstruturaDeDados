@@ -1,18 +1,27 @@
-## Getting Started
+# Estruturas de Dados em Java
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este repositório contém implementações de estruturas de dados clássicas — **Pilha**, **Fila**, **Lista Encadeada** e **Deque** — desenvolvidas em Java. Os projetos foram criados com fins didáticos, como parte dos estudos da disciplina de **Estrutura de Dados**.
 
-## Folder Structure
+## 🧠 Objetivo
 
-The workspace contains two folders by default, where:
+Explorar e praticar os principais conceitos de estruturas de dados por meio de implementações manuais em Java, reforçando o entendimento sobre o funcionamento interno de cada estrutura.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## 📚 Estruturas Implementadas
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- **Pilha (Stack)**  
+  Estrutura LIFO (Last In, First Out). Permite inserção e remoção no topo da pilha.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- **Fila (Queue)**  
+  Estrutura FIFO (First In, First Out). Elementos são inseridos no final e removidos do início.
 
-## Dependency Management
+- **Lista Encadeada (Linked List)**  
+  Lista dinâmica onde cada elemento (nó) aponta para o próximo. Suporta inserções e remoções em qualquer posição.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- **Deque (Double-Ended Queue)**  
+  Estrutura que permite inserções e remoções tanto no início quanto no fim da fila.
+
+## 🛠 Tecnologias
+
+- Linguagem: **Java**
+- Paradigma: **Programação Orientada a Objetos**
+- IDE recomendada: **IntelliJ IDEA** ou **Eclipse**
