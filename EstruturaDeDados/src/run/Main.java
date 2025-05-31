@@ -1,32 +1,26 @@
 package run;
 
-import estrutura.ListaLigadaLinear.ListaSimples.Simples;
+import estrutura.ListaLigadaCircular.ListaDupla.DuplaCircular;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Simples novaLista = new Simples();
+        DuplaCircular lista = new DuplaCircular();
 
-        novaLista.addFim(5);
-        novaLista.addFim(4);
-        novaLista.addFim(3);
-        novaLista.addFim(2);
+        lista.addInicio(5);
+        lista.addInicio(4);
+        lista.addInicio(3);
+        lista.addInicio(2);
 
-        System.out.println(novaLista.exibir());
+        System.out.println(lista.exibirAtual());
 
-        novaLista.Limpar();
+        lista.RemoverInicio();
+        lista.RemoverFim();
 
-        System.out.println(novaLista.exibir());
+        System.out.println(lista.exibirAtual());
 
-        novaLista.addInicio(0);
-        novaLista.addInicio(1);
-        novaLista.addInicio(2);
-        novaLista.addInicio(3);
+        lista.addFim(6);
+        lista.addFim(7);
 
-        System.out.println(novaLista.exibir());
-
-        novaLista.removerInicio();
-        novaLista.removerFim();
-
-        System.out.println(novaLista.exibir());
+        System.out.println(lista.exibirAtual());
     }
 }
