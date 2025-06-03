@@ -1,26 +1,24 @@
 package run;
 
-import estrutura.ListaLigadaCircular.ListaDupla.DuplaCircular;
+import estrutura.Pilha.PilhaVetor;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        DuplaCircular lista = new DuplaCircular();
+        PilhaVetor lista = new PilhaVetor(5);
+        
+        lista.empilhar(10);
+        lista.empilhar(20);
+        lista.empilhar(30);
+        lista.empilhar(40);
+        lista.empilhar(50);
 
-        lista.addInicio(5);
-        lista.addInicio(4);
-        lista.addInicio(3);
-        lista.addInicio(2);
+        System.out.println("Topo: " + lista.topo());
+        System.out.println("Pilha atual:\n" + lista);
 
-        System.out.println(lista.exibirAtual());
+        lista.inverterPilha();
+        PilhaVetor clone = lista.clonar();
 
-        lista.RemoverInicio();
-        lista.RemoverFim();
-
-        System.out.println(lista.exibirAtual());
-
-        lista.addFim(6);
-        lista.addFim(7);
-
-        System.out.println(lista.exibirAtual());
+        System.out.println("Topo: " + clone.topo());
+        System.out.println("Pilha clone:\n" + clone);
     }
 }
