@@ -35,6 +35,36 @@ public class Simples {
         this.tam++;
     }
 
+    public void addAntes(int valor, int pos) throws Exception{
+        Node alvo_ant = buscarPorPosicao(pos - 1);
+
+        if(pos == 0){
+            addInicio(valor);
+        }else{
+            Node novo_no = new Node(valor);
+            novo_no.setProx(alvo_ant.getProx());
+            alvo_ant.setProx(novo_no);
+
+            this.tam ++;
+        }
+    
+    }
+
+    public void addDepois(int valor, int pos) throws Exception{
+        Node alvo = buscarPorPosicao(pos);
+        
+        if(pos == this.tam - 1){
+            addFim(valor);
+        }else{
+            Node novo_no = new Node(valor);
+
+            novo_no.setProx(alvo.getProx());
+            alvo.setProx(novo_no);
+
+            this.tam ++;
+        }
+    }
+
     public void removerInicio(){
         if(!vazio()){
             Node prox = this.inicio.getProx();
@@ -61,7 +91,53 @@ public class Simples {
         }
     }
 
-    public void Limpar(){
+    public void removerNode(int pos) throws Exception{
+        if(!vazio()){
+
+            if(pos == 0){
+                removerInicio();
+            }else if(pos == this.tam - 1){
+                removerFim();
+            }else{
+                Node alvo = buscarPorPosicao(pos);
+                Node ant_alvo = buscarPorPosicao(pos - 1);
+                
+                ant_alvo.setProx(alvo.getProx());
+                alvo.setProx(null); //Desconecta da lista 
+
+                this.tam--;
+            }
+
+        }
+    }
+
+    public Node buscarPorElemento(int valor){
+        Node atual = this.inicio;
+
+        for(int i = 0; i < this.tam; i++){
+            if(atual.getValor() == valor){
+                return atual;
+            }
+            
+            atual = atual.getProx();
+        }
+
+        return null;
+    }
+
+    public Node buscarPorPosicao(int pos) throws Exception{
+        if(!(pos >= 0 && pos < this.tam)) throw new IllegalArgumentException("Posição invalida");
+
+        Node atual = this.inicio;
+
+        for(int i = 0; i < pos; i++){
+            atual = atual.getProx();
+        }
+
+        return atual;
+    }
+
+    public void limpar(){
         while(!vazio()){
             removerInicio();
         }

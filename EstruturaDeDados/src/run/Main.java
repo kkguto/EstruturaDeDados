@@ -1,24 +1,25 @@
 package run;
 
-import estrutura.Pilha.PilhaVetor;
+import estrutura.Fila.FilaVetor;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        PilhaVetor lista = new PilhaVetor(5);
-        
-        lista.empilhar(10);
-        lista.empilhar(20);
-        lista.empilhar(30);
-        lista.empilhar(40);
-        lista.empilhar(50);
+        FilaVetor lista = new FilaVetor(5);
 
-        System.out.println("Topo: " + lista.topo());
-        System.out.println("Pilha atual:\n" + lista);
+        lista.enfilerar(5);
+        lista.enfilerar(6);
+        lista.enfilerar(7);
 
-        lista.inverterPilha();
-        PilhaVetor clone = lista.clonar();
+        System.out.println(lista);
 
-        System.out.println("Topo: " + clone.topo());
-        System.out.println("Pilha clone:\n" + clone);
+        FilaVetor clone = new FilaVetor(5);
+        clone.enfilerar(4);
+        clone.enfilerar(3);
+        clone.enfilerar(2);
+
+        FilaVetor intercalar = lista.intercalar(clone);
+
+        System.out.println(intercalar);
+
     }
 }
