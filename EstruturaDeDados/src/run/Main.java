@@ -1,25 +1,23 @@
 package run;
 
-import estrutura.Fila.FilaVetor;
+import estrutura.ListaLigadaLinear.ListaDupla.Dupla;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        FilaVetor lista = new FilaVetor(5);
+        Dupla lista = new Dupla();
 
-        lista.enfilerar(5);
-        lista.enfilerar(6);
-        lista.enfilerar(7);
+        lista.addInicio(5);
+        lista.addInicio(6);
+        lista.addInicio(7);
 
-        System.out.println(lista);
+        System.out.println(lista.exibirAtual());
 
-        FilaVetor clone = new FilaVetor(5);
-        clone.enfilerar(4);
-        clone.enfilerar(3);
-        clone.enfilerar(2);
+        lista.addAntes(4, 1);
 
-        FilaVetor intercalar = lista.intercalar(clone);
+        System.out.println(lista.exibirAtual());
 
-        System.out.println(intercalar);
+        lista.removerNode(2);
+        System.out.println(lista.exibirAtual());
 
     }
 }

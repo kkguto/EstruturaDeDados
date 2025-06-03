@@ -37,6 +37,42 @@ public class Dupla {
         this.tam++;
     }
 
+    public void addAntes(int valor, int pos) throws Exception{
+        DNode alvo = buscarPorPosicao(pos);
+
+        if(pos == 0){
+            addInicio(valor);
+        }else{
+            DNode novo_no = new DNode(valor);
+
+            alvo.getAnt().setProx(novo_no);
+            novo_no.setAnt(alvo.getAnt());
+
+            novo_no.setProx(alvo);
+            alvo.setAnt(novo_no);
+
+            this.tam++;
+        }
+    }
+
+    public void addDepois(int valor, int pos) throws Exception{
+        DNode alvo = buscarPorPosicao(pos);
+
+        if(pos == this.tam - 1){
+            addFim(valor);
+        }else{
+            DNode novo_no = new DNode(valor);
+
+            novo_no.setProx(alvo.getProx());
+            alvo.getProx().setAnt(novo_no);
+
+            alvo.setProx(novo_no);
+            novo_no.setAnt(alvo);
+
+            this.tam++;
+        }
+    }
+
     public void removerInicio(){
         if(!vazio()){
             DNode prox = this.inicio.getProx();
@@ -61,6 +97,47 @@ public class Dupla {
         }
     }
 
+    public void removerNode(int pos) throws Exception{
+        DNode alvo = buscarPorPosicao(pos);
+
+        if(pos == 0){
+            removerInicio();
+        }else if(pos == this.tam - 1){
+            removerFim();
+        }else{
+            alvo.getAnt().setProx(alvo.getProx());
+            alvo.getProx().setAnt(alvo.getAnt());
+
+            alvo.setProx(null);
+            alvo.setAnt(null);
+
+            this.tam--;
+        }
+    }
+
+    public DNode buscarPorElemento(int valor){
+        DNode atual = this.inicio;
+
+        while(atual != null){
+            if(atual.getValor() == valor) return atual;
+            atual = atual.getProx();
+        }
+        
+        return null;
+    }
+
+    public DNode buscarPorPosicao(int pos) throws Exception{
+        if(!(pos >= 0 && pos < this.tam)) throw new IllegalArgumentException("Posição invalida");
+
+        DNode atual = this.inicio;
+
+        for(int i = 0; i < pos; i++){
+            atual = atual.getProx();
+        }
+
+        return atual;
+    }
+
     public void limpar(){
         while(!vazio()){
             removerInicio();
@@ -80,7 +157,10 @@ public class Dupla {
         DNode atual = this.inicio;
 
         while(atual != null){
-            builder.append(atual.getValor()).append(" -> ");
+            builder.append(atual.getValor());
+            if(atual.getProx() != null){
+                builder.append(" -> ");
+            }
             atual = atual.getProx();
         }
 
@@ -95,7 +175,10 @@ public class Dupla {
         DNode atual = this.fim;
 
         while(atual != null){
-            builder.append(atual.getValor()).append(" <- ");
+            builder.append(atual.getValor());
+            if(atual.getAnt() != null){
+                builder.append(" <- ");
+            }
             atual = atual.getAnt();
         }
 
